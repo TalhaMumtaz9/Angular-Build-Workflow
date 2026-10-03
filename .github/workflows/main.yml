@@ -2,25 +2,30 @@ name: Angular Build
 
 on:
   push:
-    branches:
+    branhes:
       - main
+
   pull_request:
-    branches:
-      - main
+    branhes:
+     - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout code
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
         with:
           node-version: 20
-          cache: npm
+          cache: npm 
 
       - name: Install dependencies
         run: npm ci
 
       - name: Build Angular app
         run: npm run build
+      
